@@ -47,11 +47,13 @@ jobs:
           head: ${{ github.event.pull_request.head.sha }}
           extra_args: --results=verified,unknown
 
-      # On push or schedule: full filesystem scan (no base/head diff,
+      # On push or schedule: full git-history scan (no base/head diff,
       # which avoids "BASE and HEAD are the same" on push to main).
+      # Note: the trufflehog action already passes --no-update internally,
+      # so do NOT add it here — duplicate flag makes trufflehog exit 1.
       - name: Run trufflehog (full scan)
         if: github.event_name != 'pull_request'
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          extra_args: --results=verified,unknown --no-update
+          extra_args: --results=verified,unknown
