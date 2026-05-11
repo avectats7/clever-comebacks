@@ -37,10 +37,21 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run trufflehog
+      # On PRs: diff-scan between base and head of the PR.
+      - name: Run trufflehog (PR diff)
+        if: github.event_name == 'pull_request'
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          base: ${{ github.event.repository.default_branch }}
-          head: HEAD
+          base: ${{ github.event.pull_request.base.sha }}
+          head: ${{ github.event.pull_request.head.sha }}
           extra_args: --results=verified,unknown
+
+      # On push or schedule: full filesystem scan (no base/head diff,
+      # which avoids "BASE and HEAD are the same" on push to main).
+      - name: Run trufflehog (full scan)
+        if: github.event_name != 'pull_request'
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          extra_args: --results=verified,unknown --no-update
