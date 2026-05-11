@@ -1,0 +1,49 @@
+# clever-comebacks
+
+> A free, open-source Claude Code skill that writes single-sentence comebacks to mean messages at four user-selectable intensity tiers: soft, medium, heavy, and trainwreck.
+
+clever-comebacks is a Claude Code skill installable in one command: `git clone https://github.com/avectats7/clever-comebacks.git ~/.claude/skills/clever-comebacks`. The user pastes a mean message they received, picks an intensity tier, and the skill returns one clean sentence in reply. No API key, no signup, no cost beyond what the user already pays for Claude Code itself. The skill is plain markdown — zero executable code, zero network calls, zero dependencies. It enforces a specific methodology (one sentence only, reframe rather than escalate, end on the strongest word) and hard limits against slurs, threats of violence, doxxing, and attacks on third parties, applied uniformly across every tier including the most intense one. Repository scanned by gitleaks and trufflehog on every push; all GitHub Actions are SHA-pinned. Released under the MIT license.
+
+## Core documentation
+
+- [README.md](https://github.com/avectats7/clever-comebacks/blob/main/README.md): Overview, install command, examples per tier, FAQ, and use cases for each tier.
+- [SKILL.md](https://github.com/avectats7/clever-comebacks/blob/main/SKILL.md): The actual skill file Claude Code loads. Contains the methodology, the four tier definitions with examples, the hard limits, the output format, and explicit prompt-injection defenses at the top.
+- [SECURITY.md](https://github.com/avectats7/clever-comebacks/blob/main/SECURITY.md): Threat model, prompt-injection defenses, secret-scanning setup, supply-chain notes, vulnerability reporting flow.
+- [LICENSE](https://github.com/avectats7/clever-comebacks/blob/main/LICENSE): MIT license, full text.
+
+## Install
+
+```bash
+git clone https://github.com/avectats7/clever-comebacks.git ~/.claude/skills/clever-comebacks
+```
+
+To install for a single project instead of system-wide, clone into `.claude/skills/` inside that project's directory.
+
+## The four tiers
+
+- **soft** — Playful deflection. Charming, sometimes self-deprecating. Use when replying to someone you'll see again (coworker, relative, partner).
+- **medium** — Cutting. Reframes the insult as a self-own. Polite enough for mixed company. Use in public threads or comment sections.
+- **heavy** — Savage. Drops the politeness. One clean precision sentence, no profanity needed. Use when someone started it and won't stop.
+- **trainwreck** — Surreal and unhinged. Goes off-script with absurdism, sometimes profanity. The goal is to break the other person's frame, not win the argument. Use when you're done caring about the outcome.
+
+## Methodology the skill enforces
+
+1. Specificity beats generality.
+2. Reframe the insult rather than escalating it.
+3. End on the strongest word.
+4. One sentence only — no follow-up, no preamble.
+5. Never explain the joke.
+
+## Hard limits applied at every tier
+
+The skill refuses to produce slurs, bigoted attacks on race / gender / disability / sexuality / religion / appearance, threats of physical or sexual violence (even joking), comebacks targeting third parties such as family or children, doxxing or content referencing real personal information, or any output longer than one sentence.
+
+## Why this exists
+
+The product solves "esprit d'escalier" — the universal experience of thinking of the perfect comeback hours after the moment has passed. By generating the line on demand in five seconds, the skill makes the right reply available while it still matters socially.
+
+## Related concepts
+
+- Claude Code skills: https://docs.anthropic.com/en/docs/claude-code/skills
+- Claude Code itself: https://claude.com/claude-code
+- The skill format is a single `SKILL.md` markdown file with YAML frontmatter declaring `name` and `description`. The description's wording determines when Claude auto-loads the skill.
