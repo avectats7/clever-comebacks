@@ -1,0 +1,30 @@
+{
+  "name": "clever-comebacks",
+  "description": "Generate a single-sentence clever comeback to a mean message at a chosen intensity tier — soft (playful), medium (cutting), heavy (savage), or trainwreck (unhinged). Methodology built around specificity, reframing, and one-sentence discipline. Hard limits against slurs, threats, doxxing, and third-party targets at every tier.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Tato Polanco",
+    "url": "https://github.com/avectats7"
+  },
+  "homepage": "https://github.com/avectats7/clever-comebacks",
+  "repository": "https://github.com/avectats7/clever-comebacks",
+  "license": "MIT",
+  "keywords": [
+    "comeback",
+    "roast",
+    "witty-reply",
+    "burn",
+    "clever-response",
+    "one-liner",
+    "claude",
+    "claude-code",
+    "claude-skill",
+    "claude-plugin",
+    "writing",
+    "humor",
+    "wit",
+    "comebacks",
+    "reply",
+    "insult"
+  ]
+}

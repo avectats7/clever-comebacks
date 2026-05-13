@@ -7,7 +7,8 @@ You know the feeling. Someone says something cutting. You stand there. Three hou
 This is the fix. A free [Claude Code](https://claude.com/claude-code) skill. Paste the mean message. Pick a tier. Get one clean sentence back. The right one. While it still matters.
 
 ```bash
-git clone https://github.com/avectats7/clever-comebacks.git ~/.claude/skills/clever-comebacks
+/plugin marketplace add avectats7/clever-comebacks
+/plugin install clever-comebacks
 ```
 
 Then in Claude Code:
@@ -81,13 +82,23 @@ A Claude Code skill is a single markdown file (`SKILL.md`) that extends [Claude 
 
 ### How do I install clever-comebacks?
 
-Run this command in your terminal:
+Two commands in any Claude Code session:
 
 ```bash
-git clone https://github.com/avectats7/clever-comebacks.git ~/.claude/skills/clever-comebacks
+/plugin marketplace add avectats7/clever-comebacks
+/plugin install clever-comebacks
 ```
 
-The skill is then available in every Claude Code session on your machine. To scope it to a single project, clone into `.claude/skills/` inside that project's directory instead.
+The skill is then available in every Claude Code session on your machine.
+
+If you prefer a manual install (or you are not on Claude Code), clone the repo and copy the skill folder into your skills directory:
+
+```bash
+git clone https://github.com/avectats7/clever-comebacks.git
+cp -r clever-comebacks/skills/clever-comebacks ~/.claude/skills/
+```
+
+To scope to a single project, copy into `<project>/.claude/skills/` instead.
 
 ### How do I use it?
 
@@ -109,7 +120,7 @@ Two differences that matter. First, the skill lives inside Claude Code, so it's 
 
 ### Will it write something racist, homophobic, or violent if I ask?
 
-No. The hard limits apply at every tier including trainwreck. The skill will refuse to produce slurs, bigoted attacks, threats of violence (sexual or physical), comebacks targeting the speaker's family or kids, or anything that doxxes a real person. The constraints are listed in [SKILL.md](SKILL.md) and they're non-negotiable. If you want a tool without those guardrails, this is not the one.
+No. The hard limits apply at every tier including trainwreck. The skill will refuse to produce slurs, bigoted attacks, threats of violence (sexual or physical), comebacks targeting the speaker's family or kids, or anything that doxxes a real person. The constraints are listed in [SKILL.md](skills/clever-comebacks/SKILL.md) and they're non-negotiable. If you want a tool without those guardrails, this is not the one.
 
 ### Is it safe to install?
 
@@ -117,13 +128,27 @@ Yes. The skill is a single markdown file with no executable code, no network cal
 
 ### Can I install it for one project instead of system-wide?
 
-Yes. Clone into the project's `.claude/skills/` directory instead of your home directory:
+Yes. After running `/plugin install clever-comebacks` from inside a project directory, the plugin is registered for that project's Claude Code sessions. For manual installs, copy the skill folder into the project's `.claude/skills/` instead of your home directory:
 
 ```bash
-cd your-project && git clone https://github.com/avectats7/clever-comebacks.git .claude/skills/clever-comebacks
+git clone https://github.com/avectats7/clever-comebacks.git
+cp -r clever-comebacks/skills/clever-comebacks your-project/.claude/skills/
 ```
 
 ### How do I update or uninstall?
+
+If installed via plugin:
+
+```bash
+# Update
+/plugin update clever-comebacks
+
+# Uninstall
+/plugin uninstall clever-comebacks
+/plugin marketplace remove avectats7-clever-comebacks
+```
+
+If installed manually:
 
 ```bash
 # Update
@@ -143,7 +168,7 @@ PRs are welcome — especially better example comebacks for each tier, new langu
 
 ## See also
 
-- [SKILL.md](SKILL.md) — the skill itself, including methodology, all four tiers, and hard limits (~5 KB, readable in two minutes)
+- [SKILL.md](skills/clever-comebacks/SKILL.md) — the skill itself, including methodology, all four tiers, and hard limits (~5 KB, readable in two minutes)
 - [SECURITY.md](SECURITY.md) — threat model, prompt-injection defenses, secret-scanning setup
 - [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code)
 - [How to write your own Claude Code skill](https://docs.anthropic.com/en/docs/claude-code/skills)

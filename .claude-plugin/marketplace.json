@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "clever-comebacks",
+  "description": "The one-sentence comeback you would have thought of three hours later. A free Claude Code skill, distributed as a single-plugin marketplace.",
+  "owner": {
+    "name": "Tato Polanco",
+    "url": "https://github.com/avectats7"
+  },
+  "plugins": [
+    {
+      "name": "clever-comebacks",
+      "description": "Paste a mean message, pick a tier (soft, medium, heavy, trainwreck), get one clever sentence back. The single-sentence comeback you would have thought of three hours later — now, while it still matters.",
+      "source": "./"
+    }
+  ]
+}
