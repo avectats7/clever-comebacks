@@ -10,6 +10,7 @@
     {
       "name": "clever-comebacks",
       "description": "Paste a mean message, pick a tier (soft, medium, heavy, trainwreck), get one clever sentence back. The single-sentence comeback you would have thought of three hours later — now, while it still matters.",
+      "category": "productivity",
       "source": "./"
     }
   ]

@@ -91,14 +91,14 @@ Two commands in any Claude Code session:
 
 The skill is then available in every Claude Code session on your machine.
 
-If you prefer a manual install (or you are not on Claude Code), clone the repo and copy the skill folder into your skills directory:
+If you prefer a manual install (or you are not on Claude Code), clone the repo to a stable location and symlink the skill folder:
 
 ```bash
-git clone https://github.com/avectats7/clever-comebacks.git
-cp -r clever-comebacks/skills/clever-comebacks ~/.claude/skills/
+git clone https://github.com/avectats7/clever-comebacks.git ~/code/clever-comebacks
+ln -s ~/code/clever-comebacks/skills/clever-comebacks ~/.claude/skills/clever-comebacks
 ```
 
-To scope to a single project, copy into `<project>/.claude/skills/` instead.
+To scope to a single project, symlink into `<project>/.claude/skills/` instead.
 
 ### How do I use it?
 
@@ -148,14 +148,15 @@ If installed via plugin:
 /plugin marketplace remove avectats7-clever-comebacks
 ```
 
-If installed manually:
+If installed manually (clone + symlink):
 
 ```bash
 # Update
-cd ~/.claude/skills/clever-comebacks && git pull
+cd ~/code/clever-comebacks && git pull
 
 # Uninstall
-rm -rf ~/.claude/skills/clever-comebacks
+rm ~/.claude/skills/clever-comebacks    # the symlink
+rm -rf ~/code/clever-comebacks          # the clone
 ```
 
 ### Does the skill work in other Claude products?
